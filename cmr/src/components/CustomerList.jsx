@@ -4,7 +4,7 @@ import CustomerListItem from '../components/CustomerListItem'
 export default function CustomerListPage() {
 
     const {customerList, setCustomerList} = useContext(UserInputContext) 
-console.log(customerList)
+
   return (
     <div>
       {customerList.map(item => {

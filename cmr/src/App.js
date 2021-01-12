@@ -5,6 +5,8 @@ import DetailPage from "./pages/CustomerDetailPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import FetchUserData from "./Fetches/FetchUserData";
+import DeleteButton from "./components/DeleteButton";
+import CustomerCreateComponent from "./components/CustomerCreateComponent";
 function App() {
   const [userInfo, setUserInfo] = useState("");
   const [customerList, setCustomerList] = useState([]);
@@ -38,9 +40,12 @@ function App() {
   }
 
   useEffect(() => {
-    getCustomerList();
     getMe();
   }, []);
+
+  useEffect(() => {
+    getCustomerList();
+  }, [<HomePage />]);
 
   const userInputContextValue = {
     userInfo,

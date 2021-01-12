@@ -22,7 +22,6 @@ export default function CustomerDetailPage(props) {
 
   useEffect(() => {
     getCustomerItem();
-  
   }, []);
 
 

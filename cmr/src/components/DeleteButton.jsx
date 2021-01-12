@@ -8,6 +8,9 @@ const customerId = id
 const history = useHistory()
 console.log(id)
 
+const {customerList, setCustomerList} = useContext(UserInputContext) 
+
+
 
 function deleteCustomer() {
   const url = `https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
@@ -20,7 +23,13 @@ function deleteCustomer() {
     }
   })
   .then(() => history.push('/homepage'))
+
 }
+
+
+
+
+
   return (
     <div>
 <button onClick={deleteCustomer}>Delete</button>

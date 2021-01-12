@@ -1,9 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect, useContext} from 'react'
+
 import { useHistory } from 'react-router-dom'
+import {UserInputContext} from '../contexts/UserInputContext'
+import UserInfoComponent from '../components/UserInfoComponent'
+import CustomerList from '../components/CustomerList'
+import CustomerCreateComponent from '../components/CustomerCreateComponent'
 
 export default function CustomerCreatePage() {
   const [formData, setFormData] = useState({})
   const history = useHistory()
+  const {customerList, setCustomerList} = useContext(UserInputContext) 
 
   function handleOnChange(e) {
     const name = e.target.name
@@ -42,6 +48,10 @@ export default function CustomerCreatePage() {
       history.push('/homepage')
     })
   }
+
+
+ 
+
 
   return (
     <div>
