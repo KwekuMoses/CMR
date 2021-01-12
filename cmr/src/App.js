@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Switch>
-        <Route path="/homepage/:id" component={DetailPage} />
+        <Route path="/homepage/:id2" component={DetailPage} />
 
         <Route path="/homepage">
           <HomePage />
