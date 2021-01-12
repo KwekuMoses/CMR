@@ -1,10 +1,15 @@
-import React from 'react'
-import CustomerListItem from './CustomerListItem'
+import React, {useState, useEffect, useContext} from 'react'
+import {UserInputContext} from '../contexts/UserInputContext'
+import CustomerListItem from '../components/CustomerListItem'
+export default function CustomerListPage() {
 
-export default function CustomerList() {
-    return (
-        <div>
-            <CustomerListItem/>
-        </div>
-    )
+    const {customerList, setCustomerList} = useContext(UserInputContext) 
+console.log(customerList)
+  return (
+    <div>
+      {customerList.map(item => {
+        return <CustomerListItem key={item.id} customerData={item} />
+      })}
+    </div>
+  )
 }

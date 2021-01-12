@@ -8,11 +8,12 @@ export default function HomePage() {
         <>
 <h1>HomePage</h1>
 
-<CustomerCreateComponent />
 <CustomerList/>
 <div>
 <UserInfoComponent/>
 </div>
+<CustomerCreateComponent />
+
 
         </>
     )

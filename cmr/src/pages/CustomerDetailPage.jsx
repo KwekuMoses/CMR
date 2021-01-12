@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom'
 import { UserInputContext } from "../contexts/UserInputContext";
+import DeleteButton  from '../components/DeleteButton'
 export default function CustomerDetailPage(props) {
-
- const {customerId, setCustomerId} = useContext(UserInputContext)
-   setCustomerId(props.match.params.id) 
+  const customerId = props.match.params.id
   const [customerItem, setCustomerItem] = useState(null)
-  const history = useHistory()
 
 
   function getCustomerItem() {
@@ -22,12 +20,11 @@ export default function CustomerDetailPage(props) {
     .then(data => setCustomerItem(data))
   }
 
+  useEffect(() => {
+    getCustomerItem();
+  
+  }, []);
 
-  useEffect( () => {
-    getCustomerItem()
-  }, [])
-
-  console.log(customerId)
 
   return (
     <div>
@@ -81,8 +78,8 @@ export default function CustomerDetailPage(props) {
               </tr>
             </tbody>
           </table>
-          <button >Delete Customer</button>
           <Link to={`/customers/${customerId}/edit`}>Edit Customer</Link> 
+          <DeleteButton id={customerId}/>
         </div>
       )
       :

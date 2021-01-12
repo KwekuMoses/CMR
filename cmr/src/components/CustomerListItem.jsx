@@ -1,9 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function CustomerListItem() {
-    return (
-        <div>
-            <div >CustomerListItem</div>
-        </div>
-    )
+export default function CustomerListItem({customerData}) {
+  console.log(customerData)
+  return (
+    <div>
+      <h2>
+        <Link to={`/customers/${customerData.id}`}>
+          {customerData.name}
+        </Link>
+      </h2>
+    </div>
+  )
 }
