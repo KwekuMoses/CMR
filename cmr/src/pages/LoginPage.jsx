@@ -7,7 +7,6 @@ export default function LoginPage() {
     password: "javascriptoramverk"
   })
   const history = useHistory()
-  console.log(history)
 
   function handleOnSubmit(e) {
     e.preventDefault()

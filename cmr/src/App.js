@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import { UserInputContext } from "./contexts/UserInputContext";
 import DetailPage from "./pages/CustomerDetailPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import FetchUserData from "./Fetches/FetchUserData";
-import DeleteButton from "./components/DeleteButton";
-import CustomerCreateComponent from "./components/CustomerCreateComponent";
+import CustomerUpdatePage from "./pages/CustomerUpdatePage";
+import "./App.css";
 function App() {
   const [userInfo, setUserInfo] = useState("");
   const [customerList, setCustomerList] = useState([]);
-  const [customerId, setCustomerId] = useState(null);
+  const [customerId, setCustomerId] = useState([]);
 
   function getMe() {
     const url = "https://frebi.willandskill.eu/api/v1/me/";
@@ -52,20 +51,21 @@ function App() {
     setUserInfo,
     customerList,
     setCustomerList,
+    customerId,
+    setCustomerId,
   };
 
   return (
     <>
       <UserInputContext.Provider value={userInputContextValue}>
-        <Switch>
-          <Route path="/customers/:id" component={DetailPage} />
-          <Route path="/homepage">
-            <HomePage />
-          </Route>
-          <Route path="/">
-            <LoginPage />
-          </Route>
-        </Switch>
+        <Route path="/customers/:id/edit" component={CustomerUpdatePage} />
+        <Route path="/customers/:id/" component={DetailPage} />
+        <Route path="/homepage">
+          <HomePage />
+        </Route>
+        <Route exact path="/">
+          <LoginPage />
+        </Route>
       </UserInputContext.Provider>
     </>
   );

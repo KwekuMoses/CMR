@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import { UserInputContext } from "../contexts/UserInputContext";
+import  {useState, useEffect} from 'react'
 
 export default function FetchUserData() {
-    const [userInfo, setUserInfo] = useState("")
+    const [ setUserInfo] = useState("")
    
 
     function getMe() {
@@ -23,10 +22,6 @@ export default function FetchUserData() {
         getMe();
       }, []);
 
-      const userInputContextValue = {
-        userInfo,
-        setUserInfo,
-      };
-
+   
 
 }

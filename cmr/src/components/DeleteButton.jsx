@@ -1,14 +1,11 @@
-import React, { useContext,useEffect} from 'react' 
+import React from 'react' 
 import {useHistory} from 'react-router-dom'
-import {UserInputContext} from  '../contexts/UserInputContext'
-
+import {ButtonStyled} from '../styles/ButtonStyled'
 
 export default function DeleteButton({id}) {
 const customerId = id
 const history = useHistory()
-console.log(id)
 
-const {customerList, setCustomerList} = useContext(UserInputContext) 
 
 
 
@@ -23,16 +20,13 @@ function deleteCustomer() {
     }
   })
   .then(() => history.push('/homepage'))
-
 }
-
-
 
 
 
   return (
     <div>
-<button onClick={deleteCustomer}>Delete</button>
+<ButtonStyled onClick={deleteCustomer}>Delete</ButtonStyled>
     </div>
   )
 }
