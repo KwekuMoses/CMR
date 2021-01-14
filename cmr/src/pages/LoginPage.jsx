@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-
 export default function LoginPage() {
   const [formData, setFormData] = useState({
     email: "Kweku.Moses@yh.nackademin.se",
@@ -27,6 +26,7 @@ export default function LoginPage() {
       localStorage.setItem("WEBB20", data.token)
       history.push("/homepage")
     })
+    
 
   }
 
@@ -36,6 +36,10 @@ export default function LoginPage() {
     const newObj = {...formData, [inputName]: inputValue}
     setFormData(newObj)
   }
+
+  
+
+
 
   return (
     <div>

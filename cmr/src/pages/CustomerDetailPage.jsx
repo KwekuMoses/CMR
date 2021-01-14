@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {  Link } from 'react-router-dom'
 import DeleteButton  from '../components/DeleteButton'
+import getCustomerList from '../components/CustomerListComponent'
 export default function CustomerDetailPage(props) {
   const customerId = props.match.params.id
   const [customerItem, setCustomerItem] = useState(null)
@@ -21,7 +22,7 @@ export default function CustomerDetailPage(props) {
 
   useEffect(() => {
     getCustomerItem();
-  }, []);
+  },[]);
 
 
   return (

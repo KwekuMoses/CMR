@@ -6,11 +6,13 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import CustomerUpdatePage from "./pages/CustomerUpdatePage";
 import "./App.css";
+import DeleteButton from "./components/DeleteButton";
+import CustomerDetailPage from "./pages/CustomerDetailPage";
 function App() {
   const [userInfo, setUserInfo] = useState("");
   const [customerList, setCustomerList] = useState([]);
   const [customerId, setCustomerId] = useState([]);
-
+  const [formData, setFormData] = useState(null);
   function getMe() {
     const url = "https://frebi.willandskill.eu/api/v1/me/";
     const token = localStorage.getItem("WEBB20");
@@ -44,7 +46,7 @@ function App() {
 
   useEffect(() => {
     getCustomerList();
-  }, [<HomePage />]);
+  }, []);
 
   const userInputContextValue = {
     userInfo,
@@ -53,6 +55,8 @@ function App() {
     setCustomerList,
     customerId,
     setCustomerId,
+    formData,
+    setFormData,
   };
 
   return (

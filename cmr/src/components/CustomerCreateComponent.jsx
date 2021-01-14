@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext,useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import {ButtonStyled} from '../styles/ButtonStyled'
+import { UserInputContext } from '../contexts/UserInputContext'
+import CustomerListPage, {customerListPage} from './CustomerListComponent'
 export default function CustomerCreatePage() {
-  const [formData, setFormData] = useState({})
+  const {formData, setFormData} = useContext(UserInputContext)
+const {setCustomerList} = useContext(UserInputContext)
   const history = useHistory()
 
   function handleOnChange(e) {
@@ -20,12 +22,13 @@ export default function CustomerCreatePage() {
           type={type || "text"} 
           name={name} 
           onChange={handleOnChange}
-         
         />
       </div>
     )
   }
 
+  useEffect( () => {
+  }, [])
   function handleOnSubmit(e){
     e.preventDefault()
     const url = "https://frebi.willandskill.eu/api/v1/customers/"
@@ -39,18 +42,21 @@ export default function CustomerCreatePage() {
       }
     })
     .then( res => res.json())
-    .then( data => {
-      history.push('/homepage')
+    .then( data =>  fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
     })
+    .then(res => res.json())
+    .then(data => setCustomerList(data.results))
+  
+)
   }
 
-
- 
-
-
   return (
-    <div id="createcustomer">
-      <h1>Create New Customer</h1>
+    <div>
+      <h1>Create Customer</h1>
       <form onSubmit={handleOnSubmit}>
         {renderInput("name", "Customer Name")}
         {renderInput("email", "Customer Email", "email")}
@@ -60,10 +66,10 @@ export default function CustomerCreatePage() {
         {renderInput("reference", "Reference")}
         {renderInput("vatNr", "Vat Number")}
         {renderInput("website", "Website", "url")}
-        <ButtonStyled type="submit">Create New Customer</ButtonStyled>
+        <button type="submit">Create Customer</button>
 
       </form>
-     
+      <code>{JSON.stringify(formData)}</code>
     </div>
   )
 }
