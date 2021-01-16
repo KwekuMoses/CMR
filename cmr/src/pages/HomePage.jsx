@@ -1,20 +1,14 @@
-import React, {useContext, useMemo} from 'react'
-import CustomerCreateComponent from '../components/CustomerCreateComponent'
-import CustomerListComponent from '../components/CustomerListComponent'
-import UserInfoComponent from '../components/UserInfoComponent'
-import { UserInputContext } from '../contexts/UserInputContext'
-import HomePageStyles from "../styles/HomePageStyles";
+import CreateCustomer from '../components/CreateCustomer'
+import CustomerList from '../components/CustomerList'
+import UserInfoComponent from '../components/UserInfo'
 export default function HomePage() {
-
+console.log("hej")
     
     return (
         <>
-<HomePageStyles>
-<UserInfoComponent/>
-<CustomerListComponent />
-<CustomerCreateComponent />
-</HomePageStyles>
-
+                <UserInfoComponent/>
+                <CustomerList />
+                <CreateCustomer/>
         </>
     )
 }

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
-const ButtonStyled = styled.button `
-margin-top: 10px;
-width:100px;
-background-color:${props => props.create ? "#90eb908a" : "pink"};
-border:2px solid black;
+export const Button = styled.button`
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
 
-`
-export {ButtonStyled}
-
+export const TomatoButton = styled(Button)`
+  color: tomato;
+  border-color: tomato;
+`;

@@ -1,8 +1,13 @@
-import React from 'react' 
+import React, {useContext} from 'react' 
 import {useHistory} from 'react-router-dom'
-import {ButtonStyled} from '../styles/ButtonStyled'
+import { client } from "../client/client.js";
+import {UserInputContext} from '../contexts/UserInputContext'
+import {TomatoButton} from '../styles/ButtonStyled'
+
 
 export default function DeleteButton({id}) {
+  const {setCustomerList} = useContext(UserInputContext)
+
 const customerId = id
 const history = useHistory()
 
@@ -19,14 +24,17 @@ function deleteCustomer() {
       "Authorization": `Bearer ${token}`
     }
   })
-  .then(() => history.push('/homepage'))
+  .then(() => {
+   client.getCustomerList().then((data) => setCustomerList(data.results));
+    history.push('/homepage')
+  })
 }
 
 
 
   return (
     <div>
-<ButtonStyled onClick={deleteCustomer}>Delete</ButtonStyled>
+<TomatoButton onClick={deleteCustomer}>Delete</TomatoButton>
     </div>
   )
 }

@@ -1,11 +1,12 @@
-import React, { useState, useEffect,useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { UserInputContext } from '../contexts/UserInputContext'
 import { useHistory } from 'react-router-dom'
-import {UserInputContext} from '../contexts/UserInputContext'
-import App from '../App'
+import { client } from '../client/client'
+import {TomatoButton} from '../styles/ButtonStyled'
 
 export default function CustomerUpdatePage(props) {
-  const {customerId, setCustomerId} = useContext(UserInputContext)
-  setCustomerId(props.match.params.id) 
+const  customerId = props.match.params.id 
+const { setCustomerList} = useContext(UserInputContext)
   
   const [formData, setFormData] = useState({})
   const history = useHistory()
@@ -25,7 +26,7 @@ export default function CustomerUpdatePage(props) {
 
   useEffect( () => {
     getCustomerItem()
-  }, [])
+  },[])
 
   function handleOnChange(e) {
     const name = e.target.name
@@ -61,7 +62,11 @@ export default function CustomerUpdatePage(props) {
       }
     })
     .then(res => res.json())
-    .then(() => history.push(`/customers/${customerId}`))
+    .then(() =>{
+      client.getCustomerList().then((data) => setCustomerList(data.results));
+      history.push(`/homepage`)
+    })
+    
   }
 
   return (
@@ -76,7 +81,7 @@ export default function CustomerUpdatePage(props) {
         {renderInput("reference", "Reference")}
         {renderInput("vatNr", "Vat Number")}
         {renderInput("website", "Website", "url")}
-        <button type="submit">Update Customer</button>
+        <TomatoButton type="submit">Update Customer</TomatoButton>
 
       </form>
 
