@@ -8,7 +8,8 @@ export default function CustomerList() {
 
 
   return (
-    <div>
+    <div className="customerList">
+      <h2>CustomerList</h2>
       {customerList.map(item => {
         return <CustomerListItem key={item.id} customerData={item} />
       })}

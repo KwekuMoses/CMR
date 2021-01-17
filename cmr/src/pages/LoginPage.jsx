@@ -24,7 +24,7 @@ export default function LoginPage() {
     .then(res => res.json())
     .then(data => {
       localStorage.setItem("WEBB20", data.token)
-      history.push("/homepage")
+      history.push("/home")
     })
     
 

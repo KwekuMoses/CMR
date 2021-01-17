@@ -21,7 +21,7 @@ export default function CreateCustomer() {
   function renderInput(name, label, type,) {
 
     return (
-      <div>
+      <div className="createCustomer">
         <label>{label}</label>
         <input 
           type={type || "text"} 
@@ -29,12 +29,12 @@ export default function CreateCustomer() {
           onChange={handleOnChange}
           required
         />
-      </div>
+      </div >
     )
   }
   function renderVat(name, label, type, validator,) {
     return (
-      <div>
+      <div className="createCustomer">
         <label>{label}</label>
         <input 
           type={type || "text"} 
@@ -44,11 +44,14 @@ export default function CreateCustomer() {
             if (valid) {
             document.getElementById('create').removeAttribute("disabled")
             document.getElementById("message").innerHTML="toppen"
+            document.getElementById("message").style.color="green"
+
               handleOnChange(e)
             }
             else {
               console.log(document.getElementById("create").setAttribute("disabled", true))
               document.getElementById("message").innerHTML="SE och 10 Siffror"
+              document.getElementById("message").style.color="red"
               console.log(`${label} not valid`)
               handleOnChange(e)
             }
@@ -76,10 +79,11 @@ export default function CreateCustomer() {
         {renderInput("phoneNumber", "Phone Number", "phone")}
         {renderInput("reference", "Reference")}
         {renderVat("vatNr", "Vat Number", "text", vatValidator)}
+      <p id="message"></p>
+
         {renderInput("website", "Website", "url")}
         <Button id="create" disabled type="submit">Create Customer</Button>
       </form>
-      <p id="message"></p>
      {/*<code>{JSON.stringify(formData)}</code> */}
     </div>
   )

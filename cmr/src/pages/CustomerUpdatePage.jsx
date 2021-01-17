@@ -64,7 +64,7 @@ const { setCustomerList} = useContext(UserInputContext)
     .then(res => res.json())
     .then(() =>{
       client.getCustomerList().then((data) => setCustomerList(data.results));
-      history.push(`/homepage`)
+      history.push(`/home`)
     })
     
   }

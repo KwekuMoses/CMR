@@ -26,7 +26,7 @@ function deleteCustomer() {
   })
   .then(() => {
    client.getCustomerList().then((data) => setCustomerList(data.results));
-    history.push('/homepage')
+    history.push('/home')
   })
 }
 

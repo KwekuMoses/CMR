@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { UserInputContext } from "./contexts/UserInputContext";
 import LoginPage from "./pages/LoginPage";
 import CustomerUpdatePage from "./pages/CustomerUpdatePage";
-import "./App.css";
+import "./css/App.css";
 import CustomerDetailPage from "./pages/CustomerDetailPage";
 import { client } from "./client/client.js";
 import HomePage from "./pages/HomePage";
@@ -16,9 +16,6 @@ function App() {
 
   useEffect(() => {
     client.getMe().then((data) => setUserInfo(data));
-  }, []);
-
-  useEffect(() => {
     client.getCustomerList().then((data) => setCustomerList(data.results));
   }, []);
 
@@ -36,7 +33,7 @@ function App() {
       <UserInputContext.Provider value={userInputContextValue}>
         <Route path="/customers/:id/edit" component={CustomerUpdatePage} />
         <Route path="/customers/:id/" component={CustomerDetailPage} />
-        <Route path="/homepage">
+        <Route path="/home">
           <HomePage />
         </Route>
         <Route exact path="/">

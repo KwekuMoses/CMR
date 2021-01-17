@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+* {
+  margin: 0;
+  font-family: 'Archivo', sans-serif;
+  font-size: large;
+}
+
+* #root {
+  display: grid;
+  grid-template-areas: "a" "b" "c";
+}
+
+* #root #welcomeuser {
+  display: block;
+  background-color: aqua;
+}
+
+* #root .customerList {
+  display: grid;
+  place-items: center;
+  border: 1px solid #dbc6c6;
+  width: 300px;
+  place-self: center;
+}
+
+* #root .createCustomer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 40%;
+}
